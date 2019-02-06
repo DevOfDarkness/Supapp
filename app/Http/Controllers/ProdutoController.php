@@ -25,7 +25,7 @@ class ProdutoController extends Controller
      */
     public function store(Request $request)
     {
-      $fornecedor = new Produto;
+      $produto = new Produto;
 
       $produto->categoria = $request->categoria;
       $produto->nome = $request->nome;
@@ -43,7 +43,7 @@ class ProdutoController extends Controller
      */
     public function show($id)
     {
-      $produto = Produto::findOrFail($id;
+      $produto = Produto::findOrFail($id);
 
       return response()->json([$produto]);
     }
@@ -57,7 +57,7 @@ class ProdutoController extends Controller
      */
     public function update(Request $request, $id)
     {
-      $fornecedor = Produto::findOrFail($id);
+      $produto = Produto::findOrFail($id);
 
       if($request->nome)
         $produto->nome = $request->nome;
@@ -69,6 +69,7 @@ class ProdutoController extends Controller
         $produto->qtd_Estoque = $request->qtd_Estoque;
 
       $produto->save();
+      return response()->json([$produto]);
 
     }
 

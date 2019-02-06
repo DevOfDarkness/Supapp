@@ -47,7 +47,7 @@ class FornecedorController extends Controller
      */
     public function show($id)
     {
-        $fornecedor = Fornecedor::findOrFail($id;
+        $fornecedor = Fornecedor::findOrFail($id);
 
         return response()->json([$fornecedor]);
     }
@@ -75,6 +75,8 @@ class FornecedorController extends Controller
           $fornecedor->email = $request->email;
 
         $fornecedor->save();
+        return response()->json([$fornecedor]);
+
 
     }
 

@@ -61,17 +61,18 @@ class ClientController extends Controller
       $cliente = Cliente::findOrFail($id);
 
       if($request->nome_cliente)
-        $fornecedor->nome_cliente = $request->nome_cliente;
+        $cliente->nome_cliente = $request->nome_cliente;
       if($request->cnpj_cliente)
-        $fornecedor->cnpj_cliente = $request->cnpj_cliente;
+        $cliente->cnpj_cliente = $request->cnpj_cliente;
       if($request->endereco_cliente)
-        $fornecedor->endereco_cliente = $request->endereco_cliente;
+        $cliente->endereco_cliente = $request->endereco_cliente;
       if($request->telefone_cliente)
-        $fornecedor->telefone_cliente = $request->telefone_cliente;
+        $cliente->telefone_cliente = $request->telefone_cliente;
       if($request->email_cliente)
-        $fornecedor->email_cliente = $request->email_cliente;
+        $cliente->email_cliente = $request->email_cliente;
 
       $cliente->save();
+      return response()->json([$cliente]);
     }
 
     /**
