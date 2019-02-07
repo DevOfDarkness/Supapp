@@ -20,6 +20,7 @@ class CreateFornecedorsTable extends Migration
             $table->string('endereco');
             $table->string('telefone');
             $table->string('email');
+            $table->string('classificacao')->nullable();
             $table->timestamps();
 
 

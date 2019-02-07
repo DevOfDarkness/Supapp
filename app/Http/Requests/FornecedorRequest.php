@@ -25,15 +25,30 @@ class FornecedorRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            //
-        ];
+      return [
+          'nome' => 'required|string',
+          'email' => 'required|email',
+          'endereco' => 'required|string',
+          'telefone' => 'required|string',
+          'cnpj' => 'required|cnpj',
+      ];
     }
+    public function messages()
+      {
+        return [
+          'email.required' => 'Insira um email válido',
+          'endereco.required' => 'Por favor, insira um endereço válido',
+          'telefone.required' => 'Por favor, insira um telefone válido',
+          'nome.required' => 'Insira um nome válido',
+          'cnpj.required.unique' => 'Insira um cnpj válido',
+        ];
+      }
+
 
     protected function failedValidation(Validator $validator)
     {
     throw new
-    HttpResponseException(response()->json($validator->error(),
+    HttpResponseException(response()->json($validator->errors(),
     422));
     }
 

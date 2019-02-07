@@ -19,7 +19,8 @@ class CreateProdutosTable extends Migration
             $table->string('nome');
             $table->string('categoria');
             $table->string('qtd_Estoque');
-            $table->float('preco');            
+            $table->float('preco');
+            $table->string('medida');      
             $table->timestamps();
         });
     }

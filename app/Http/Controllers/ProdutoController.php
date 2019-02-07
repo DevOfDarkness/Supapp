@@ -33,6 +33,7 @@ class ProdutoController extends Controller
       $produto->validade = $request->validade;
       $produto->qtd_Estoque = $request->qtd_Estoque;
       $produto->preco = $request->preco;
+      $produto->medida = $request->medida;
       $produto->save();
       return response()->json([$produto]);
     }

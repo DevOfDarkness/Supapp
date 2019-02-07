@@ -25,7 +25,7 @@ class ClienteRequest extends FormRequest
      */
     public function rules()
     {
-        return [
+      return [
             'nome_cliente' => 'required|string',
             'cnpj_cliente' => 'required|cnpj',
             'email_cliente' => 'required|email',
@@ -33,14 +33,19 @@ class ClienteRequest extends FormRequest
             'telefone_cliente' => 'required|telefone',
         ];
     }
-
     public function messages()
     {
       return [
-        'email_cliente.email.required' => 'Insira um email válido',
+        'email_cliente.email' => 'Insira um email válido',
+        'email_cliente.required' => 'Insira um email',
+        'email_cliente.unique' => 'Este e-mail já existe',
         'endereco_cliente.required' => 'Por favor, insira um endereço válido',
-        'telefone_cliente.required.unique' => 'Por favor, insira um telefone válido',
-        'cnpj_cliente.required.unique' => 'Por favor, insira um cnpj válido'
+        'telefone_cliente.required' => 'Por favor, insira um número de telefone',
+        'telefone_cliente.telefone' => 'Por favor, insira um telefone válido',
+        'cnpj_cliente.required' => 'Por favor, insira um cnpj',
+        'cnpj_cliente.cnpj' => 'Este cnpj já existe',
+        'nome_cliente.required' => 'Por favor, insira um nome',
+
       ];
     }
 

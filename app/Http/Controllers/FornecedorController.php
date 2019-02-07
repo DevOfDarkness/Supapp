@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Fornecedor;
 use App\Http\Resources\FornecedorResource;
+use App\Http\Requests\FornecedorRequest;
 
 class FornecedorController extends Controller
 {
@@ -26,7 +27,7 @@ class FornecedorController extends Controller
      */
 
 
-    public function store(Request $request)
+    public function store(FornecedorRequest $request)
     {
         $fornecedor = new Fornecedor;
 
