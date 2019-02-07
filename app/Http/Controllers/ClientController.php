@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Cliente;
+use App\Http\Resources\ClienteResource;
+use App\Http\Requests\ClienteRequest;
 
 class ClientController extends Controller
 {
@@ -14,7 +16,7 @@ class ClientController extends Controller
      */
     public function index()
     {
-        //
+        return Cliente::all();
     }
 
     /**
@@ -23,7 +25,7 @@ class ClientController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ClienteRequest $request)
     {
       $cliente = new Cliente;
 
@@ -46,7 +48,7 @@ class ClientController extends Controller
     {
       $cliente = Cliente::findOrFail($id);
 
-      return response()->json([$cliente]);
+      return new ClienteResource($cliente);
     }
 
     /**

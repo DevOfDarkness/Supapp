@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Fornecedor;
+use App\Http\Resources\FornecedorResource;
 
 class FornecedorController extends Controller
 {
@@ -14,7 +15,7 @@ class FornecedorController extends Controller
      */
     public function index()
     {
-        //
+        return Fornecedor::all();
     }
 
     /**
@@ -49,7 +50,7 @@ class FornecedorController extends Controller
     {
         $fornecedor = Fornecedor::findOrFail($id);
 
-        return response()->json([$fornecedor]);
+        return new FornecedorResource($fornecedor);
     }
 
     /**

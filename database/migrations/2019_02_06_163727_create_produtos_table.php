@@ -18,7 +18,8 @@ class CreateProdutosTable extends Migration
             $table->string('validade');
             $table->string('nome');
             $table->string('categoria');
-            $table->string('qtd_Estoque');            
+            $table->string('qtd_Estoque');
+            $table->float('preco');            
             $table->timestamps();
         });
     }

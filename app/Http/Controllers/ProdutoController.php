@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Produto;
+use App\Http\Resources\ProdutoResource;
 
 class ProdutoController extends Controller
 {
@@ -14,7 +15,7 @@ class ProdutoController extends Controller
      */
     public function index()
     {
-        //
+        return Produto::all();
     }
 
     /**
@@ -31,6 +32,7 @@ class ProdutoController extends Controller
       $produto->nome = $request->nome;
       $produto->validade = $request->validade;
       $produto->qtd_Estoque = $request->qtd_Estoque;
+      $produto->preco = $request->preco;
       $produto->save();
       return response()->json([$produto]);
     }
@@ -45,7 +47,7 @@ class ProdutoController extends Controller
     {
       $produto = Produto::findOrFail($id);
 
-      return response()->json([$produto]);
+      return new ProdutoResource($produto);
     }
 
     /**
@@ -67,6 +69,8 @@ class ProdutoController extends Controller
         $produto->validade = $request->validade;
       if($request->qtd_Estoque)
         $produto->qtd_Estoque = $request->qtd_Estoque;
+      if($request->preco)
+        $produto->preco = $request->preco;
 
       $produto->save();
       return response()->json([$produto]);
